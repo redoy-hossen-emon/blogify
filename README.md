@@ -39,13 +39,19 @@ A full-stack blogging application built with **Node.js**, **Express.js**, **Mong
 Install dependencies:
 
 copy this files-
-blogging-app/
-├─ models/          # Mongoose models for User and Blog
-├─ routes/          # Express routes for authentication and blogs
-├─ views/           # EJS templates (or your preferred view engine)
-├─ public/          # Static files (Tailwind CSS, images, etc.)
-├─ app.js           # Main application file
-└─ package.json
+Folder Structure
+- blogging-app/
+- ├─ controllers/      # Controllers for handling request logic
+- ├─ middleware/       # Middleware for authentication, validation, etc.
+- ├─ models/           # Mongoose models for User and Blog
+- ├─ routes/           # Express routes for authentication and blogs
+- ├─ services/         # Business logic and reusable service functions
+- ├─ public/           # Static files (Tailwind CSS, images, etc.)
+- ├─ views/            # EJS templates (or your preferred view engine)
+- ├─ app.js            # Main application file
+- ├─ dbConnect.js      # Database connection setup
+- ├─ package.json      # Node.js dependencies and scripts
+- └─ package-lock.json # Automatically generated lock file
 
 Contributing
 Contributions are welcome! Feel free to submit a pull request or open an issue for suggestions and improvements.
