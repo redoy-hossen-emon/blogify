@@ -11,8 +11,8 @@ const Blog = require('./models/blog');
 
 
 const app = express();
-const PORT = process.env.PORT || 3000
-const DBURI = process.env.mongo_URL || 'mongodb://127.0.0.1:27017/testDB'
+const PORT = process.env.PORT 
+const DBURI = process.env.mongo_URL 
 
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"))
@@ -63,4 +63,5 @@ app.use("/blog", blogsRoute)
 // Start server 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+
 });
