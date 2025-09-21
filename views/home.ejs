@@ -1,0 +1,178 @@
+<%- include("./partials/header.ejs") %>
+    <!-- Hero Section -->
+    <section
+      class="relative h-[90vh] flex items-center justify-center text-white"
+    >
+      <!-- Background Image -->
+      <div class="absolute inset-0">
+        <img
+          src="https://picsum.photos/1600/900?random=10"
+          alt="hero background"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+      </div>
+      <!-- Hero Content -->
+      <div class="relative text-center z-10 p-6">
+        <h1 class="text-5xl font-bold mb-4">Welcome to My Blog</h1>
+        <p class="text-lg mb-6">
+          Insights, tutorials, and stories from developers.
+        </p>
+        <a
+          href="/blog"
+          class="bg-indigo-600 px-6 py-2 rounded-lg font-semibold hover:bg-indigo-700"
+          >Explore Blogs</a
+        >
+      </div>
+    </section>
+
+    <!-- Blog Demos -->
+    <section id="blogs" class="container mx-auto py-16 px-6">
+      <h2 class="text-3xl font-bold mb-8 text-center">Latest Blog Posts</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+      <% blogs.forEach(blog => { function texttac() { return blog.content.length
+  > 100 ? blog.content.substring(0, 100) + "..." :text; } %>
+     
+        <article
+          class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition"
+        >
+          <img
+            src="/uploads/<%= blog.coverImage %>"
+            class="rounded mb-4 w-full h-60"
+            alt="blog"
+          />
+          <h3 class="text-xl font-bold mb-2"> <%= blog.title %> </h3>
+          <p class="text-gray-600 mb-3"> <%= texttac() %>
+          </p>
+          <a href="/blog/index/<%= blog._id %>" class="text-indigo-600 font-semibold hover:underline"
+            >Read More</a
+          >
+        </article>
+        <% }) %>
+
+      </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="bg-white py-16 px-6">
+      <h2 class="text-3xl font-bold mb-8 text-center">Blog Analytics</h2>
+      <div class="container mx-auto space-y-8">
+        <div class="bg-gray-100 p-6 rounded shadow">
+          <canvas id="viewsChart"></canvas>
+        </div>
+        <div class="bg-gray-100 p-6 rounded shadow">
+          <canvas id="categoriesChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Writers Section -->
+    <section class="container mx-auto py-16 px-6">
+      <h2 class="text-3xl font-bold mb-8 text-center">Meet Our Writers</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow text-center">
+          <img
+            src="https://picsum.photos/150/150?random=20"
+            class="w-24 h-24 rounded-full mx-auto mb-4"
+            alt="writer"
+          />
+          <h3 class="text-xl font-bold">John Doe</h3>
+          <p class="text-gray-600 mb-3">Web Developer & Blogger</p>
+          <p>Writes about full-stack development and best coding practices.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow text-center">
+          <img
+            src="https://picsum.photos/150/150?random=21"
+            class="w-24 h-24 rounded-full mx-auto mb-4"
+            alt="writer"
+          />
+          <h3 class="text-xl font-bold">Jane Smith</h3>
+          <p class="text-gray-600 mb-3">Tech Enthusiast</p>
+          <p>Specializes in AI, cloud computing, and emerging technologies.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow text-center">
+          <img
+            src="https://picsum.photos/150/150?random=22"
+            class="w-24 h-24 rounded-full mx-auto mb-4"
+            alt="writer"
+          />
+          <h3 class="text-xl font-bold">Alex Brown</h3>
+          <p class="text-gray-600 mb-3">Content Creator</p>
+          <p>
+            Focuses on blogging tips, writing, and online growth strategies.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subscription Form -->
+    <section class="bg-indigo-600 text-white py-16 px-6">
+      <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+        <p class="mb-6">Get the latest posts delivered right to your inbox.</p>
+        <form class="max-w-lg mx-auto flex flex-col sm:flex-row">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            class="flex-1 p-3 rounded-l-lg text-gray-800 mb-3 sm:mb-0"
+            required
+          />
+          <button
+            type="submit"
+            class="bg-black px-6 py-3 rounded-lg sm:rounded-l-none hover:bg-gray-800"
+          >
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-6">
+      <p>&copy; 2025 My Blog. All rights reserved.</p>
+    </footer>
+
+    <!-- Charts Script -->
+    <script>
+      const ctx1 = document.getElementById("viewsChart");
+      new Chart(ctx1, {
+        type: "line",
+        data: {
+          labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+          datasets: [
+            {
+              label: "Views",
+              data: [120, 190, 300, 250, 200, 350, 400],
+              borderColor: "rgba(99, 102, 241, 1)",
+              backgroundColor: "rgba(99, 102, 241, 0.2)",
+              fill: true,
+              tension: 0.4,
+            },
+          ],
+        },
+        options: { responsive: true, maintainAspectRatio: false },
+      });
+
+      const ctx2 = document.getElementById("categoriesChart");
+      new Chart(ctx2, {
+        type: "doughnut",
+        data: {
+          labels: ["Web Dev", "AI", "Lifestyle", "Travel"],
+          datasets: [
+            {
+              label: "Posts",
+              data: [12, 8, 5, 3],
+              backgroundColor: [
+                "rgba(99, 102, 241, 0.8)",
+                "rgba(16, 185, 129, 0.8)",
+                "rgba(249, 115, 22, 0.8)",
+                "rgba(239, 68, 68, 0.8)",
+              ],
+            },
+          ],
+        },
+        options: { responsive: true, maintainAspectRatio: false },
+      });
+    </script>
+  </body>
+</html>

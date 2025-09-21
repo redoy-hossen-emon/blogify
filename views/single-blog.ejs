@@ -1,0 +1,46 @@
+<%- include("./partials/header.ejs") %>
+
+<div class="max-w-5xl mx-auto bg-white rounded-xl shadow-lg mt-10">
+  <!-- Blog Cover Image -->
+  <img
+    src="/uploads/<%= blog.coverImage %>"
+    alt="<%= blog.title %>"
+    class="w-full h-[500px] object-cover rounded-t-xl"
+  />
+
+  <!-- Blog Content Container -->
+  <div class="p-8">
+    <!-- Title -->
+    <h1 class="text-4xl font-bold text-gray-800 mb-4"><%= blog.title %></h1>
+
+    <!-- Meta Info -->
+    <div class="flex flex-wrap items-center text-sm text-gray-500 mb-6 gap-4">
+      <span>Category: <%= blog.category %></span>
+
+      <% if(blog.createdAt) { %>
+      <span
+        >Published: <%= new Date(blog.createdAt).toLocaleDateString() %></span
+      >
+      <% } %> <% if(blog.author) { %>
+      <span>Author: <%= blog.author %></span>
+      <% } %>
+    </div>
+
+    <!-- Full Blog Content -->
+    <div
+      class="border-t border-gray-300 py-4 text-gray-700 leading-relaxed mb-10 whitespace-pre-line"
+    >
+      <%= blog.content %>
+    </div>
+
+    <!-- Back Button -->
+    <a
+      href="/blog"
+      class="inline-block mt-8 px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition"
+    >
+      ← Back to Blogs
+    </a>
+  </div>
+</div>
+
+<%- include("./partials/footer.ejs") %>

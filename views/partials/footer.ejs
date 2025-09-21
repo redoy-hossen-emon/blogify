@@ -1,0 +1,63 @@
+
+</main>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-6">
+      <p>&copy; 2025 Blogify. All rights reserved.</p>
+    </footer>
+<script>
+  // Profile dropdown toggle for small screens
+  const profileButton = document.querySelector(
+    "nav > div > div > div.relative > button"
+  );
+  const profileMenu = document.getElementById("profileMenu");
+
+  profileButton.addEventListener("click", () => {
+    profileMenu.classList.toggle("hidden");
+  });
+
+  // home page dynamic
+  const ctx1 = document.getElementById("viewsChart");
+  new Chart(ctx1, {
+    type: "line",
+    data: {
+      labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      datasets: [
+        {
+          label: "Views",
+          data: [120, 190, 300, 250, 200, 350, 400],
+          borderColor: "rgba(99, 102, 241, 1)",
+          backgroundColor: "rgba(99, 102, 241, 0.2)",
+          fill: true,
+          tension: 0.4,
+        },
+      ],
+    },
+    options: { responsive: true, maintainAspectRatio: false },
+  });
+
+  const ctx2 = document.getElementById("categoriesChart");
+  new Chart(ctx2, {
+    type: "doughnut",
+    data: {
+      labels: ["Web Dev", "AI", "Lifestyle", "Travel"],
+      datasets: [
+        {
+          label: "Posts",
+          data: [12, 8, 5, 3],
+          backgroundColor: [
+            "rgba(99, 102, 241, 0.8)",
+            "rgba(16, 185, 129, 0.8)",
+            "rgba(249, 115, 22, 0.8)",
+            "rgba(239, 68, 68, 0.8)",
+          ],
+        },
+      ],
+    },
+    options: { responsive: true, maintainAspectRatio: false },
+  });
+
+
+
+</script>
+  </body>
+</html>

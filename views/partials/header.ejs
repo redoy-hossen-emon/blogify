@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Blog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog - explore today trending articales</title>
+   
+    
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Chart.js --
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head> -->
+
+  <body>
+
+
+<!-- Navbar -->
+<nav class="flex justify-between items-center px-8 py-4 bg-gradient-to-r from-pink-500 to-red-400">
+  <!-- Logo -->
+  <div class="text-2xl font-bold text-white">Blogify</div>
+
+  <!-- Links -->
+  <ul class="flex space-x-8 text-white font-medium z-50">
+    <li class="py-4">
+      <a href="/"
+        class="relative pb-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+        Home
+      </a>
+    </li>
+    <li class="py-4">
+      <a href="/blog/add-new"
+        class="relative pb-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+        Write
+      </a>
+    </li>
+    <!-- Blogs Dropdown -->
+    <li class="relative group py-4">
+      <a href="/blog"
+        class="relative pb-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+        Blogs
+      </a>
+    </li>
+
+    <!-- Categories Dropdown -->
+    <li class="relative group py-4">
+      <button
+        class="relative pb-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 group-hover:after:w-full cursor-pointer">
+        Categories ▾
+      </button>
+      <ul
+        class="absolute hidden group-hover:block bg-white text-pink-500 rounded-md shadow-md mt-2 min-w-[150px] overflow-hidden">
+        <li><a href="/blog/category/technology" class="capitalize block px-4 py-2 hover:bg-pink-50">technology</a></li>
+        <li>
+          <a href="/blog/category/lifestyle" class="capitalize block px-4 py-2 hover:bg-pink-50">lifestyle</a>
+        </li>
+        <li><a href="/blog/category/education" class="capitalize block px-4 py-2 hover:bg-pink-50">education</a></li>
+        </li>
+        <li><a href="/blog/category/business" class="capitalize block px-4 py-2 hover:bg-pink-50">business</a></li>
+        </li>
+        <li><a href="/blog/category/travel" class="capitalize block px-4 py-2 hover:bg-pink-50">Travel</a></li>
+      </ul>
+    </li>
+    <li class="py-4">
+      <a href="/contact"
+        class="relative pb-1 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full">
+        Contact
+      </a>
+    </li>
+  </ul>
+  <% if (user) { %>
+    <!-- Profile -->
+
+    <div class="flex relative group py-4">
+      <div class="flex items-center capitalize  me-4 cursor-pointer">
+        <strong>
+          <%= user.fullName %>
+        </strong>
+      </div>
+      <img src="/images/<%= user.profileImageURL %>" alt="Profile"
+        class="w-9 h-9 rounded-full border-2 border-white cursor-pointer" />
+      <ul
+        class="absolute right-0 hidden group-hover:block bg-white text-pink-500 rounded-md shadow-md mt-2 min-w-[160px] top-[55px] overflow-hidden z-50">
+        <li>
+          <a href="#" class="block px-4 py-2 hover:bg-pink-50">My Profile</a>
+        </li>
+        <li>
+          <a href="#" class="block px-4 py-2 hover:bg-pink-50">My Posts</a>
+        </li>
+        </li>
+        <li>
+          <a href="#" class="block px-4 py-2 hover:bg-pink-50">Privacy</a>
+        </li>
+        </li>
+        <li>
+          <a href="#" class="block px-4 py-2 hover:bg-pink-50">Dashboard</a>
+        </li>
+        </li>
+        <li>
+          <a href="#" class="block px-4 py-2 hover:bg-pink-50">Settings</a>
+        </li>
+        <li><a href="/user/logout" class="block px-4 py-2 hover:bg-pink-50">Logout</a></li>
+      </ul>
+
+    </div>
+    <% }else{ %>
+      <!-- Auth + Profile -->
+
+      <div class="flex items-center space-x-4">
+        <!-- Auth Buttons -->
+        <a href="/user/signin"
+          class="px-4 py-2 border border-white text-white rounded-full hover:bg-white hover:text-pink-500 transition">
+          Login
+        </a>
+        <a href="user/signup"
+          class="px-4 py-2 bg-white text-pink-500 rounded-full hover:bg-pink-600 hover:text-white transition">
+          Sign Up
+        </a>
+      </div>
+      <% } %>
+</nav>
+<main class="bg-gray-100 min-h-screen items-center justify-center min-h-[100vh]">

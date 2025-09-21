@@ -1,0 +1,44 @@
+<%- include("./partials/header.ejs") %>
+<div class="p-6">
+  <% if(locals.searchCategory){ %>
+  <h3 class="text-2xl mb-3">
+    search for <strong><%= searchCategory %> </strong>
+  </h3>
+  <% } %>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6">
+  <% blogs.forEach(blog => { function texttac(text) { return blog.content.length
+  > 100 ? text.substring(0, 100) + "..." :text; } %>
+
+  <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+    <!-- Blog Cover -->
+    <img
+      src="/uploads/<%= blog.coverImage %>"
+      alt="<%= blog.blogTitle %>"
+      class="w-full h-48 object-cover"
+    />
+
+    <!-- Blog Content -->
+    <div class="p-5">
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">
+        <%= blog.title %>
+      </h3>
+
+      <p class="text-sm font-bold text-gray-500 mb-3"><%= blog.category %></p>
+
+      <!-- Shortened description -->
+      <p class="text-gray-600 mb-4"><%= texttac(blog.content) %></p>
+
+      <a
+        href="/blog/index/<%= blog._id %>"
+        class="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+      >
+        Read More
+      </a>
+    </div>
+  </div>
+  <% }) %>
+</div>
+
+<%-include("./partials/footer.ejs") %>

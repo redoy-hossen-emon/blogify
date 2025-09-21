@@ -1,0 +1,71 @@
+<%- include("./partials/header.ejs") %>
+
+<div class="w-full mx-auto max-w-2xl bg-white rounded-2xl shadow-lg p-8">
+  <div class="mt-8">
+    <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">
+      Add New Blog
+    </h2>
+
+    <form class="space-y-5" method="post" enctype="multipart/form-data">
+      <!-- Category -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Category</label>
+        <select
+          name="blogCetagory"
+          class="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+          required
+        >
+          <option value="">Select category</option>
+          <% blogCategory.forEach(element => {%>
+
+          <option value="<%= element %>"><%= element %></option>
+          <% }); %>
+        </select>
+      </div>
+
+      <!-- Cover Image -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Cover Image</label>
+        <input
+          type="file"
+          name="coverImage"
+          accept="image/*"
+          class="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Title -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Title</label>
+        <input
+          type="text"
+          name="blogTitle"
+          placeholder="Enter blog title"
+          class="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+          required
+        />
+      </div>
+
+      <!-- Content -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Content</label>
+        <textarea
+          name="blogContent"
+          rows="6"
+          placeholder="Write your blog content here..."
+          class="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+          required
+        ></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition duration-300"
+      >
+        Publish Blog
+      </button>
+    </form>
+  </div>
+</div>
+<%-include("./partials/footer.ejs") %>
